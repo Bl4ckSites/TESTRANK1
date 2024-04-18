@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Site feito com o intuito de ativar o lado competitivo dos alunos mostrando um ranking dos 10 melhores da sala.">
+    <meta name="keywords" content="Ranking escolar, Melhores alunos, Top 10 alunos, Desempenho acadêmico, Educação, Ensino, Alunos destacados, Excelência acadêmica, Reconhecimento acadêmico, Sucesso escolar">
+    <meta name="author" content="Roger">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ranking 3001</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7); /* Cor de fundo azul semi-transparente */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999; /* Garante que o contêiner fique acima de tudo */
+            animation: fadeIn 0.5s ease forwards; /* Animação de surgimento */
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .terms-container {
+            background-color: #1e5799; /* Azul mais escuro */
+            color: #fff; /* Letras brancas */
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #5d9cec; /* Bordas azul bebê mais escuras */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            max-width: 80%;
+            max-height: 80%;
+            overflow-y: auto; /* Adiciona barra de rolagem vertical se necessário */
+            font-family: Arial, sans-serif; /* Adiciona fonte */
+            margin: auto; /* Centraliza o contêiner na tela */
+            animation: slideIn 0.5s ease forwards; /* Animação de surgimento */
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .terms-container button#accept-button {
+            display: none; /* Esconde o botão de aceitar termos */
+        }
+
+        .terms-container p {
+            font-size: 20px; /* Tamanho da fonte aumentado */
+        }
+
+        /* Estilos para o aviso de 15 segundos */
+        #warning {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.5); /* Fundo preto semi-transparente */
+            color: yellow; /* Texto amarelo */
+            font-weight: bold; /* Fonte em negrito */
+            padding: 10px;
+            border: 2px solid yellow; /* Bordas amarelas */
+            border-radius: 5px;
+            z-index: 9999; /* Garante que fique acima de tudo */
+            display: none; /* Inicia oculto */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="overlay" id="termsOverlay" style="display: none;">
+    <div class="terms-container">
+        <h2 style="font-family: Arial, sans-serif;">Termos de Serviço</h2>
+        <div class="scrollable-container" style="max-height: 80vh; overflow-y: auto;">
+            <p><strong>Autorização de Uso de Dados:</strong> Ao fazer login neste site, você concorda que as informações do ranking não serão compartilhadas com terceiros com intuito de denegrir ou ofender nenhum dos integrantes do ranking.</p>
+            <p><strong>Uso Autorizado:</strong> Ao acessar este site, você concorda que o uso do ranking da sala de aula é restrito aos alunos da instituição e aos professores responsáveis, sendo proibido o acesso não autorizado por terceiros.</p>
+            <p><strong>Capacidade de Retirar Notas:</strong> Ao fazer login neste site, você concorda que, a qualquer momento, pode entrar em contato com o responsável e solicitar a retirada do seu nome e nota.</p>
+            <p><strong>Finalidade do Ranking:</strong> Ao utilizar este site, você reconhece que o objetivo do ranking da sala de aula é promover a competição saudável e o reconhecimento do desempenho acadêmico, sem qualquer discriminação ou preconceito.</p>
+            <p><strong>Direito de Retificação:</strong> Você tem o direito de solicitar a retificação de suas informações no ranking caso identifique algum erro ou imprecisão nos dados apresentados.</p>
+            <p><strong>Termos de Uso Sujeitos a Alterações:</strong> Reservamo-nos o direito de alterar estes termos de serviço a qualquer momento, sendo de sua responsabilidade revisá-los periodicamente para estar ciente de eventuais mudanças.</p>
+            <p><strong>Manutenção da Privacidade:</strong> Comprometimento em não divulgar ou compartilhar as informações pessoais dos usuários com terceiros sem o consentimento prévio, exceto quando exigido por lei ou ordem judicial.</p>
+            <p><strong>Proibição de Uso Indevido:</strong> Os usuários concordam em não utilizar o site para atividades ilegais, como hacking, spamming ou qualquer outra forma de violação da lei brasileira.</p>
+            <p><strong>IMPORTANTE:</strong> Ao utilizar este site, os usuários concordam expressamente que o criador do site não será responsável por quaisquer danos diretos, indiretos, incidentais, especiais, consequenciais ou punitivos, incluindo, mas não se limitando a, perda de lucros, dados, uso, reputação ou outros danos intangíveis, resultantes de: (a) acesso ou uso do site; (b) qualquer conteúdo ou informações obtidas no site; (c) qualquer acesso não autorizado, uso indevido ou alteração de informações fornecidas pelos usuários; (d) quaisquer interrupções ou falhas no funcionamento do site; (e) qualquer vírus, bugs, cavalos de Troia ou similares que possam ser transmitidos para ou através do site por qualquer terceiro; (f) qualquer erro ou omissão em qualquer conteúdo ou informações, seja decorrente de conduta negligente ou de outra forma; ou (g) qualquer outro problema ou exposição de dados que possa surgir em relação ao uso do site. Os usuários reconhecem e concordam que o uso do site é por sua própria conta e risco, e que o criador do site não será responsável por qualquer dano resultante de tais usos.</p>
+        </div>
+        <button onclick="closeTerms()">Fechar</button>
+    </div>
+</div>
+
+    <!-- Aviso de 15 segundos -->
+    <div id="warning">Ao fazer login estará concordando com os termos de serviço</div>
+
+    <div class="container" id="loginContainer">
+        <h2>Painel de Login</h2>
+        <div class="login-form">
+            <input type="text" id="username" placeholder="Usuário">
+            <br>
+            <input type="password" id="password" placeholder="Senha">
+            <br>
+            <select id="userType" onchange="toggleUserType()">
+                <option value="aluno">Aluno</option>
+                <option value="professor">Professor</option>
+            </select>
+            <br>
+            <div id="subjectSelect" class="hidden">
+                <label for="subject">Matéria:</label>
+                <select id="subject">
+                    <option value="portugues">Português</option>
+                    <option value="matematica">Matemática</option>
+                    <option value="fisica">Física</option>
+                    <option value="filosofia">Filosofia</option>
+                    <option value="empreendedorismo">Empreendedorismo</option>
+                    <option value="artes">Artes</option>
+                    <option value="educacaofisica">Educação Física</option>
+                    <option value="quimica">Química</option>
+                    <option value="biologia">Biologia</option>
+                    <option value="historia">História</option>
+                    <option value="geografia">Geografia</option>
+                </select>
+            </div>
+            <br>
+            <input type="checkbox" id="show-password-checkbox" onchange="togglePasswordVisibility()">
+            <label for="show-password-checkbox">Exibir Senha</label>
+            <br>
+            <button onclick="submitLogin()">Login</button>
+            <button onclick="showTerms()">Termos de Serviço</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        function showTerms() {
+            var overlay = document.getElementById('termsOverlay');
+            overlay.style.display = 'flex';
+        }
+
+        function closeTerms() {
+            var overlay = document.getElementById('termsOverlay');
+            overlay.style.display = 'none';
+        }
+
+        // Função para exibir o aviso de 15 segundos
+        document.addEventListener("DOMContentLoaded", function() {
+            var warning= document.getElementById('warning');
+            warning.style.display = 'block'; // Exibe o aviso
+
+            setTimeout(function() {
+                warning.style.display = 'none'; // Oculta o aviso após 15 segundos
+            }, 15000);
+        });
+    </script>
+</body>
+
+</html>

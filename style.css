@@ -1,0 +1,341 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #0f1c3f;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: relative;
+    overflow: hidden; /* Adicionado para evitar scrollbars */
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #13294b;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+    position: relative;
+    animation: fadeInContainer 1s ease, changeBorderColor 5s linear infinite alternate;
+    border: 3px solid;
+    overflow: hidden; /* Adicionado para evitar scrollbars */
+}
+
+.login-form {
+    background-color: #1b3b72;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+}
+
+.login-form input,
+.login-form select {
+    margin-bottom: 15px;
+    padding: 10px;
+    width: calc(100% - 20px);
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #0f1c3f;
+    color: #fff;
+    outline: none; /* Adicionado para remover a borda ao focar */
+}
+
+.login-form input:focus,
+.login-form select:focus {
+    border: 2px solid #f7941d; /* Adicionado para destacar o campo focado */
+}
+
+.login-form button {
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: #f7941d;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.login-form button:hover {
+    background-color: #d9770f;
+}
+
+.hidden {
+    display: none;
+}
+
+.rank-container {
+    background-color: #1b3b72;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    animation: fadeInContainer 1s ease;
+    overflow: auto; /* Adicionado para permitir rolagem do conteúdo */
+}
+
+.rank-header {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.rank-header select {
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #0f1c3f;
+    color: #fff;
+    outline: none; /* Adicionado para remover a borda ao focar */
+}
+
+.rank-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.rank-table th,
+.rank-table td {
+    padding: 8px;
+    text-align: left;
+}
+
+.rank-table th {
+    background-color: #0f1c3f;
+    color: #fff;
+}
+
+.rank-table tr:nth-child(even) {
+    background-color: #13294b;
+}
+
+.rank-table tr:nth-child(odd) {
+    background-color: #1b3b72;
+}
+
+.credits {
+    margin-top: 20px;
+    text-align: center;
+    animation: slideInCredits 1s ease;
+}
+
+.credits a {
+    color: #f7941d;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.credits a:hover {
+    color: #d9770f;
+}
+
+.about-icon {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    cursor: pointer;
+    z-index: 10001;
+    animation: fadeInContainer 1s ease;
+}
+
+.about-icon img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #f7941d;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+}
+
+.terms-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+}
+
+.credits-balloon {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    max-width: 80%;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #1b3b72;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    z-index: 10000;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    color: #fff;
+    font-size: 20px;
+}
+
+@keyframes fadeInContainer {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInCredits {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes changeBorderColor {
+    0% {
+        border-color: rgb(0, 0, 255);
+    }
+    50% {
+        border-color: rgb(0, 150, 255);
+    }
+    100% {
+        border-color: rgb(0, 200, 255);
+    }
+}
+
+/* Adicionado estilo para a visibilidade da senha */
+.show-password-checkbox {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.show-password-checkbox label {
+    margin-left: 5px;
+    color: #fff;
+}
+
+.show-password-checkbox input {
+    margin-right: 5px;
+}
+
+/* Adicionado estilo para o botão de aceitar termos */
+.terms-container button {
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: #f7941d;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    .terms-container button:hover {
+    background-color: #d9770f;
+}
+
+/* Adicionado estilo para a animação de rotação do ícone de créditos */
+.about-icon {
+    animation: fadeInContainer 1s ease, rotateIcon 2s linear infinite;
+}
+
+@keyframes rotateIcon {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Adicionado estilo para a animação de fadeIn do overlay e do balão de créditos */
+.overlay, .credits-balloon {
+    animation: fadeInOverlay 0.5s ease;
+}
+
+@keyframes fadeInOverlay {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Adicionado estilo para o botão de fechar */
+.close-button {
+    cursor: pointer;
+    color: #fff;
+    font-size: 20px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+.rank-table input[type="text"] {
+    border: none;
+    background-color: transparent;
+    outline: none;
+    width: 100%;
+    readonly: true; /* Adicionado para tornar os campos somente leitura */
+}
+
+/* Adicionado estilo para o botão de fechar ao passar o mouse */
+.close-button:hover {
+    color: #f7941d;
+}
+/* Estilo para exibir o aviso na parte inferior central da tela */
+.terms-overlay {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #03060b; /* Azul bem escuro */
+    color: #fff; /* Letra branca */
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+    z-index: 9999;
+}
+
+/* Estilo para o contêiner de termos de serviços */
+.terms-container {
+    background-color: #03060b; /* Azul bem escuro */
+    color: #fff; /* Letra branca */
+    border: 3px solid #fff; /* Bordas brancas */
+    border-radius: 5px;
+    padding: 20px;
+}
+/*scrool do termo de serviços*/
+.scrollable-container {
+    max-height: 60vh; /* Define a altura máxima em relação à altura da janela de visualização */
+    overflow-y: auto; /* Adiciona uma barra de rolagem vertical se necessário */
+}

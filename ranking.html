@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Ranking dos 10 melhores alunos da sala em cada matéria.">
+    <meta name="author" content="Roger">
+    <title>Ranking Escolar</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid #ddd;
+            width: 100%;
+            z-index: 1000;
+            position: fixed;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            padding-bottom: 20px;
+        }
+
+        header img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 0;
+        }
+
+        .main-container {
+            margin-top: 100px;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .rank-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .rank-header select {
+            padding: 5px;
+            border-radius: 3px;
+            border: none;
+            background-color: #fff;
+            color: black;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .rank-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .rank-table th,
+        .rank-table td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .rank-table input[type="text"] {
+            border: none;
+            background-color: transparent;
+            outline: none;
+            width: 100%;
+            readonly: true; /* adicionado */
+        }
+
+        .about-icon {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            font-size: 24px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: #fff;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 50px;
+            z-index: 1000;
+        }
+
+        .credits-balloon {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #0a1e3e;
+            padding: 20px;
+            border: 1px solid white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+            z-index: 999;
+            color: white;
+            display: none;
+            max-width: 300px;
+            text-align: center;
+        }
+
+        .credits h2 {
+            margin-bottom: 10px;
+        }
+
+        .credits p {
+            margin-bottom: 5px;
+        }
+
+        .credits p a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .credits p a:hover {
+            text-decoration: underline;
+        }
+
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            font-size: 20px;
+            color: #fff;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 998;
+            display: none;
+        }
+
+        @media screen and (max-width: 768px) {
+            header img {
+                max-width: 80%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <img src="titulo.png" alt="titulo da tela">
+    </header>
+
+    <div class="main-container">
+        <div class="rank-container">
+            <div class="rank-header">
+                <select onchange="showRank(this.value)">
+                    <option value="geral">Geral</option>
+                    <option value="portugues">Português</option>
+                    <option value="matematica">Matemática</option>
+                    <option value="fisica">Física</option>
+                    <option value="filosofia">Filosofia</option>
+                    <option value="empreendedorismo">Empreendedorismo</option>
+                    <option value="artes">Artes</option>
+                    <option value="educacaofisica">Educação Física</option>
+                    <option value="quimica">Química</option>
+                    <option value="biologia">Biologia</option>
+                    <option value="historia">História</option>
+                    <option value="geografia">Geografia</option>
+                </select>
+            </div>
+            <table class="rank-table" id="rankTable">
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Aluno</th>
+                        <th>Nota</th>
+                    </tr>
+                </thead>
+                <tbody id="rankBody">
+                    <!-- Aqui os dados do ranking serão carregados dinamicamente -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="about-icon" onclick="toggleCredits()">
+        ℹ️
+    </div>
+
+    <div class="credits-balloon" id="creditsBalloon">
+        <span class="close-button" onclick="toggleCredits()">&times;</span>
+        <div class="credits">
+            <h2>Créditos:</h2>
+            <p contenteditable="true">Siga-me no <a href="https://www.instagram.com/roger_18y?igsh=cW9vd2drajh6Y29x" target="_blank">Instagram</a> e <a href="https://www.tumblr.com/rogerbastos?source=share" target="_blank">Tumblr</a> </p>
+            <p contenteditable="true">Idealizadora e apoiadora:<a href="https://www.instagram.com/professorajulianagarcia?igsh=MWJlend2am4wYnl3cA==" target="_blank">Juliana Garcia</a> </p>
+        </div>
+    </div>
+
+    <div class="overlay" id="overlay"></div>
+    <script src="script_rank.js"></script>
+</body>
+
+</html>
